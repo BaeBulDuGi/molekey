@@ -1,0 +1,29 @@
+MoleKey Freeware License
+Copyright (c) 2026 jinhy318. All rights reserved.
+
+Permission is granted to install and use this software ("MoleKey",
+formerly "VsMasterKey")
+free of charge, for personal or commercial purposes, on any number of
+machines.
+
+You may NOT:
+  1. Redistribute, sell, rent, or bundle this software or any part of it
+     without prior written permission from the copyright holder.
+  2. Modify, decompile, disassemble, or reverse engineer the software,
+     except to the extent expressly permitted by applicable law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+MoleKey stores all of its data (usage statistics, key binding
+backups, color backups, settings) locally on your machine under
+%APPDATA%\VsMasterKey. Nothing is transmitted anywhere.
+
+All product names, logos, and brands mentioned in documentation are
+property of their respective owners and are used for identification
+purposes only.
