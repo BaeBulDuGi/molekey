@@ -3,6 +3,14 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.36.1 — 2026-07-21
+- Fixed: the MoleKey shortcut profile could silently fail to apply on a
+  second Visual Studio instance of the same version (a side-by-side
+  install, or an Experimental/rootSuffix hive) — it shared an
+  "already applied" marker with the first instance and skipped writing
+  its own key bindings while still reporting itself as up to date. The
+  marker is now keyed per VS instance instead of per version.
+
 ## 0.36.0 — 2026-07-19
 - Tools → Options → MoleKey gains a **Navigation** section: C++ Find All
   References routing, the C++ declaration/definition toggle, the
