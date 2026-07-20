@@ -11,7 +11,9 @@ up first and restorable in one click.
 
 ## Install
 
-Download **MoleKey.vsix** from the
+Get it from the
+[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MoleLab.MoleKey),
+or download **MoleKey.vsix** from the
 [latest release](https://github.com/BaeBulDuGi/molekey/releases/latest) and
 double-click it. The installer detects every Visual Studio 2022 / 2026
 instance on the machine (amd64 and ARM64) and lets you pick where to install.
