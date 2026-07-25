@@ -3,6 +3,75 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.36.13 — 2026-07-26
+- **Hashtags** no longer require 3 characters — any `#tag` that starts with a
+  letter now counts (`#a`, `#가`, `#ui`), in comments, English or Korean. Issue
+  refs like `#1` / `#123` still stay out of the index.
+- **My Keys** is now under an **Advanced** section in the nav — the finders and
+  the MoleKey profile cover the everyday cases, and custom key rebinding is a
+  power-user extra. Its page now opens by saying so, with a concrete example
+  (put Ctrl+D on Edit.Duplicate) instead of jumping straight into the mechanics.
+- The **My Keys** page is redrawn as the same Visual-Assist-style checker list as
+  the Colors page: a bordered card with a column header and clean rows instead of
+  a grid. Each row shows its command, the key you're adding, the command's current
+  bindings and any conflicts, with a status pill (green when applied, red when the
+  command rejected the key) and an inline **×** to remove it — no more "select the
+  row, then click Remove". A filter box narrows the list.
+
+## 0.36.11 — 2026-07-24
+- Clicking (or pressing Enter on) a result in **Find References** (Shift+Alt+F),
+  the **symbol finder**, and the **member list** now lands the caret **on the
+  symbol name** and selects it, instead of dropping to the start of the line.
+  Leading tabs no longer skew the position, and whole-word matching keeps `foo`
+  from landing inside `foobar`.
+
+## 0.36.10 — 2026-07-23
+- The **Colors & theme** page is redrawn as a Visual-Assist-style checker list.
+  Instead of a "Preset vs. Custom" radio split, there is one grid: pick a
+  starting **Set** (VA Dark / VA Light / Colorblind Dark / Colorblind Light),
+  then tick the classifications you want and click a swatch to recolor. Rows are
+  grouped (types & namespaces / members / variables / C++), each with its own
+  color, a hex box, and Bold / Italic toggles.
+- Editing any color turns the set into **Custom**; **Duplicate & edit** copies a
+  preset so you can tweak from it, and **Reset to set** discards your edits.
+  Unticked rows are left at the Visual Studio default, so you can color just a
+  subset. A filter box narrows the list.
+- The MoleKey window is **retoned to a deep-emerald brand on slate neutrals**
+  (both light and dark), and its controls are now **custom-drawn** instead of
+  the stock Visual Studio / WPF chrome: rounded checkboxes with an emerald
+  check, on/off **switches** for settings, a styled dropdown, inputs, toggles,
+  buttons, and a thin scrollbar — all sharing the one accent.
+
+## 0.36.7 — 2026-07-23
+- The MoleKey window (Ctrl+Alt+K) is redesigned around a left-hand category
+  navigation instead of top tabs — grouped nav rows with an accent-marked
+  selection, in the same green palette.
+- The main page is now a **how-to-use guide**: each feature MoleKey adds,
+  grouped by purpose (jump around code / search the solution / always-on),
+  with its key and a one-line description. The old usage-stats cheat sheet —
+  counts, "muscle memory", export, reset — is gone; a programmer wants to know
+  what's here and how to reach it, not how many times a key was pressed.
+- Fixed: the window could open with a nav row highlighted but the pane blank
+  until a second click.
+
+## 0.36.5 — 2026-07-23
+- The Find References window (Alt+Shift+F) now has a filter box: type to narrow
+  the results by code line or file name (space = AND). The file grouping and the
+  reference/decl/def count both follow the filter, and ↑↓ · Ctrl+Home/End step
+  through the narrowed list.
+
+## 0.36.4 — 2026-07-23
+- Ctrl+Home / Ctrl+End jump to the first / last result in the file, member and
+  symbol finders (plain Home/End still move the caret inside the search box).
+
+## 0.36.3 — 2026-07-22
+- The file (Alt+Shift+O), member (Alt+M) and symbol (Alt+Shift+S) finders now
+  keep a persistent key legend on the bottom bar — ↑↓ move · Enter · Tab
+  preview · Esc, plus each finder's own key (F5 refresh/rescan, F8 sort). It no
+  longer scrolls away behind the result count as you type.
+- The three finders now share one implementation of their common keyboard and
+  selection behaviour, so they stay consistent with each other.
+
 ## 0.36.1 — 2026-07-21
 - Fixed: the MoleKey shortcut profile could silently fail to apply on a
   second Visual Studio instance of the same version (a side-by-side
