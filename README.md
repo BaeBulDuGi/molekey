@@ -18,6 +18,24 @@ or download **MoleKey.vsix** from the
 double-click it. The installer detects every Visual Studio 2022 / 2026
 instance on the machine (amd64 and ARM64) and lets you pick where to install.
 
+## Screenshots
+
+**Open File in Solution** (`Alt+Shift+O`) — type parts of the name or path,
+arrows pick without leaving the search box, preview below.
+
+![Open File in Solution](images/screenshots/file-finder.png)
+
+**Find All References** (`Alt+Shift+F`) — C/C++ call sites grouped by file with
+syntax-colored lines, declarations badged and left out of the count, and a
+filter box to narrow the list.
+
+![Find All References](images/screenshots/find-references.png)
+
+**Colors & theme** — pick a starting set, tick the classifications you want,
+recolor any of them; your original editor colors are backed up on first apply.
+
+![Colors and theme](images/screenshots/colors.png)
+
 ## Navigation
 
 | Key | Window |
@@ -38,7 +56,7 @@ filters by extension.
 
 ## Hashtags — bookmarks that move with your code
 
-Write `#likeThis` (3+ chars, Unicode/Korean OK) in any comment:
+Write `#likeThis` (starts with a letter, Unicode/Korean OK) in any comment:
 
 ```cpp
 // #renderLoop frame starts here
