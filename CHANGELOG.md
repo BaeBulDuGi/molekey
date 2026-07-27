@@ -3,6 +3,11 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.36.14 — 2026-07-27
+- Packaging-only release. No functional changes since 0.36.13 — this is the
+  build that brings everything below to the Marketplace, which had been sitting
+  at 0.36.1.
+
 ## 0.36.13 — 2026-07-26
 - **Hashtags** no longer require 3 characters — any `#tag` that starts with a
   letter now counts (`#a`, `#가`, `#ui`), in comments, English or Korean. Issue
