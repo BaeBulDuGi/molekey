@@ -3,6 +3,14 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.36.15 — 2026-07-28
+- Listing fix: the extension description showed a corrupted character where
+  "declaration/definition toggle" should have been.
+- The Marketplace tags now cover what people actually search for (code
+  navigation, go to definition, reference count, bookmarks, syntax
+  highlighting, colorblind, keybindings, C++/C#, VS 2026).
+- No changes to the extension itself.
+
 ## 0.36.14 — 2026-07-27
 - Packaging-only release. No functional changes since 0.36.13 — this is the
   build that brings everything below to the Marketplace, which had been sitting
