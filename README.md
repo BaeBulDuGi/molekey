@@ -25,11 +25,22 @@ arrows pick without leaving the search box, preview below.
 
 ![Open File in Solution](images/screenshots/file-finder.png)
 
+**List Methods in File** (`Alt+M`) — the active document's members, grouped by
+class, with the body of the selected one previewed underneath.
+
+![List Methods in File](images/screenshots/member-list.png)
+
 **Find All References** (`Alt+Shift+F`) — C/C++ call sites grouped by file with
 syntax-colored lines, declarations badged and left out of the count, and a
 filter box to narrow the list.
 
 ![Find All References](images/screenshots/find-references.png)
+
+**Task markers** (`Shift+Alt+K`) — every `TODO` / `FIXME` / `BUG` in the
+solution's comments: markers with counts on the left, their locations on the
+right.
+
+![Task markers](images/screenshots/task-markers.png)
 
 **Colors & theme** — pick a starting set, tick the classifications you want,
 recolor any of them; your original editor colors are backed up on first apply.
@@ -41,10 +52,12 @@ recolor any of them; your original editor colors are backed up on first apply.
 | Key | Window |
 |---|---|
 | `Alt+Shift+O` | **Open File in Solution** — every solution file, filtered as you type (space = AND terms) |
-| `Alt+M` | **List Methods in File** — the active document's functions/fields/types, Enter jumps |
+| `Alt+M` | **List Methods in File** — the active document's functions/fields/types grouped by class, Enter jumps |
 | `Alt+Shift+S` | **Find Symbol in Solution** — every type & member defined in your code |
 | `Alt+Shift+F` | **Find All References** — C/C++ gets a call-site list grouped by file; other languages keep the VS window |
 | `Ctrl+Shift+G` | **Open File Under Caret** — resolves the `#include` or path at the caret across the whole solution |
+| `Shift+Alt+J` | **Jump History** — every place you've been this session, Enter goes back |
+| `Shift+Alt+K` | **Task Markers** — every `TODO` / `FIXME` / `HACK` in the solution's comments |
 | `Shift+Alt+H` | **Hashtags** — browse every `#tag` written in comments across the solution |
 | `Shift+Alt+G` | **Goto Hashtag** — locations of the `#tag` under the caret, Enter = next |
 | `Ctrl+F12` | **Toggle Declaration/Definition** — C/C++ functions jump between the `.h` prototype and the `.cpp` body |
@@ -52,7 +65,21 @@ recolor any of them; your original editor colors are backed up on first apply.
 All finders share one flow: type to filter → arrows to pick (without leaving
 the search box) → Enter to jump → Esc to close. Filter tokens work everywhere:
 `/src` narrows results to paths containing `src`, and `.cpp` (file finder)
-filters by extension.
+filters by extension. Matching is fuzzy — `mkap` finds `MasterKeyApplier` —
+with exact prefix and substring hits always ranked first.
+
+In the file finder, `Ctrl+Enter` opens the file beside what you were reading
+(reusing the side group when there already is one), and `Alt+Enter` opens the
+file's C/C++ partner (`.h` ↔ `.cpp`) instead of the row you picked — so
+picking `foo.h` when you meant `foo.cpp` costs no second search.
+
+With the editor split, `Alt+Shift+W` moves the caret to the group on the other
+side and `Alt+Shift+U` puts the split away — both from the editor, where you
+are when you want them.
+
+Opened the wrong one? `Ctrl+Tab` cycles file → member → symbol (and
+`Ctrl+1/2/3` goes straight to one) **carrying your query with it**, so a
+misfire costs one keystroke instead of Esc-plus-retype.
 
 ## Hashtags — bookmarks that move with your code
 
@@ -67,6 +94,24 @@ Write `#likeThis` (starts with a letter, Unicode/Korean OK) in any comment:
 - Typing `#` in a comment **autocompletes** existing tags
 - Preprocessor directives (`#include`, `#region`) are never mistaken for tags
 - Solution-wide index with per-file caching; unsaved edits included
+
+## Task markers — `Shift+Alt+K`
+
+The same comment parser also collects `TODO`, `FIXME`, `HACK`, `BUG`, `XXX`
+and `UNDONE`, browsable the same way: markers on the left with counts, their
+locations on the right, Enter jumps. Only **uppercase** markers in comments
+count, so ordinary prose ("note that this is a bug") never shows up, and
+neither does anything in code or a string literal. Unlike the built-in task
+list this covers the whole solution, not just the files you have open. Edit the
+list with `task_markers` in `%APPDATA%\VsMasterKey\settings.txt`.
+
+## Jump History — `Shift+Alt+J`
+
+The trail of places you've been this session, as a filterable list with code
+previews. Navigate-backward (`Ctrl+-`) walks the same trail one blind step at a
+time and overshooting loses the spot; here you can see it and go straight
+there. It opens with the *previous* location selected, so Enter means "back
+one". Nothing is written to disk.
 
 ## C/C++ references
 
@@ -94,6 +139,13 @@ Write `#likeThis` (starts with a letter, Unicode/Korean OK) in any comment:
 Presets that give fields, parameters, statics and macros distinct colors
 (dark & light variants), or build your own per-item scheme with a color picker.
 Works on Visual Studio 2022 and 2026 (including the 2026 C++ editor rework).
+
+**Moving from VS 2022?** It doesn't bring your Fonts and Colors along, and
+importing the `.vssettings` through VS drops every C++ item — 2026 renamed
+them. *Import from VS 2022…* on the Colors page maps the old names to the new
+ones so the C++ colors survive too. The same page also puts the editor
+settings the upgrade resets — scroll bar map mode, its preview tooltip,
+scroll bar marks, line numbers — back within reach.
 
 ## Trust
 
