@@ -3,6 +3,122 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.37.0 — 2026-08-01
+
+A navigation cycle: the finders got the matching and the handoffs they were
+missing, and two new browsers cover ground Visual Studio leaves open — where
+your TODOs are, and where you have been.
+
+- **Fuzzy matching in every finder.** Typing `mkap` to reach
+  `MasterKeyApplier` already worked in Open File in Solution; Find Symbol
+  (`Alt+Shift+S`) and List Methods (`Alt+M`) only did substring matching, so
+  the same query came back empty there. All three now share one matcher.
+  Exact hits are unaffected — prefix and substring results still sort above
+  fuzzy ones, so nothing you already type reshuffles.
+- **Switch finders without retyping.** In any of the three finders, `Ctrl+Tab`
+  cycles file → member → symbol (`Ctrl+Shift+Tab` backwards, `Ctrl+1/2/3`
+  jumps straight to one) and your query comes along. Reaching for `Alt+M`
+  when the symbol was in another file no longer means Esc, another chord and
+  typing it again.
+- **Finders reopen with your last query**, selected — Enter repeats the jump
+  you just made, typing starts a fresh search, so neither case costs a
+  keystroke more than before. Remembered per finder, for the current Visual
+  Studio session only. Off switch in Tools → Options → MoleKey → Navigation.
+- **Open File in Solution: `Ctrl+Enter` and `Alt+Enter`.** Ctrl+Enter drops the
+  file into a side-by-side tab group instead of on top of what you were
+  reading; Alt+Enter opens its header/source counterpart, for when the list
+  gave you `foo.h` and you meant `foo.cpp`. Both fall back to a plain open
+  when they don't apply.
+- **Self-Diagnose now reports who else holds MoleKey's own keys**, flagging a
+  conflicting Text Editor scope binding — the kind that silently wins over
+  ours whenever focus is in the editor.
+- **Visual Studio editor settings** on the Colors & theme page: map mode for
+  the vertical scroll bar, the map's source-preview tooltip, scroll bar marks
+  and line numbers. These are VS's own settings, not MoleKey's — they're here
+  because VS 2026 doesn't carry them over from 2022 either, and the pages they
+  used to live on moved. Each switch reads VS's actual state, so it can't drift
+  from what Tools → Options says.
+- **Import colors from Visual Studio 2022** (Colors & theme → *Import from
+  VS 2022…*). VS 2026 doesn't carry Fonts and Colors over, and importing the
+  `.vssettings` through VS itself silently drops every C++ item because 2026
+  renamed them (`cppType` → `CppTypeSemanticTokenFormat`, …). MoleKey already
+  had that rename table for its presets, so it maps through and lands the C++
+  colors too. Export from VS 2022 with Tools → Import and Export Settings →
+  Fonts and Colors. Your current colors are backed up first, so *Restore
+  Defaults* undoes an import.
+- **Jump History (`Shift+Alt+J`)** — the trail of places you've been this
+  session, as a filterable list with code previews. Navigate-backward
+  (`Ctrl+-`) walks the same trail one blind step at a time, and overshooting
+  loses the spot; here you can see it and go straight there. It opens with the
+  *previous* location selected, so Enter means "back one". `F5` refreshes,
+  `Del` empties it. Entries come from MoleKey navigations and from the caret
+  position of each document as you visit it; nothing is written to disk.
+- **Task markers browser (`Shift+Alt+K`)** — every `TODO`, `FIXME`, `HACK`,
+  `BUG`, `XXX` and `UNDONE` written in comments across the solution, in the
+  same two-panel browser as the hashtags: markers with counts on the left,
+  their locations on the right, Enter jumps. Only uppercase markers inside
+  comments count, so prose and string literals stay out. Unlike the built-in
+  task list this covers the whole solution, not just open files. Edit the
+  marker list with `task_markers` in `settings.txt`.
+- **List Methods (`Alt+M`) groups members by their class**, with a collapsible
+  header and a count, so a long file reads as its types instead of one run of
+  names. Order inside a group is unchanged, so "file order" still reads
+  top-to-bottom. `F7` turns grouping off (remembered), which brings the "In"
+  column back.
+- **Shortcuts inside the finders no longer leak to Visual Studio.** `Ctrl+Enter`
+  ran the editor's line command instead of opening the file beside your work,
+  and `Alt+Enter` brought a tool window forward — any chord VS itself binds was
+  taken before the finder saw it, while keys VS doesn't bind (Enter, Esc, the
+  arrows) arrived normally. The finders now announce themselves as modal, so
+  they get their own keystrokes.
+- **`Ctrl+Enter` reuses the side group instead of stacking another.** Pressing
+  it with the caret already in the right-hand group used to grow a third tab
+  group, then a fourth.
+- **`Alt+Shift+W` jumps the caret across a split**, leaving every tab where it
+  is. It returns to the document you last left on that side, so pressing it
+  repeatedly is a back-and-forth between the two files you are actually
+  reading, and switching tabs by hand on one side makes that the tab you come
+  back to. (With several tabs open on the far side it can still arrive on the
+  wrong one before that back-and-forth settles; being worked on.)
+  `Ctrl+F6` gets there eventually but walks every open file on the
+  way, and Visual Studio's own tab-group commands all *move* documents rather
+  than following one with the caret.
+- **Opening a file that's already on the other side of a split takes you
+  there.** Picking it in a finder used to leave the caret in the group you
+  started from, looking at the file you already had.
+- **`Alt+Shift+U` undoes a split**, from the editor — where you are when you
+  want your layout back. Everything returns to a single group. It rides
+  `Window.MoveAllToPreviousTabGroup`, a built-in command that ships without a
+  shortcut, and comes with the MoleKey profile like the rest.
+- **Jumps land on the symbol, not on a stale line number.** Find Symbol
+  (`Alt+Shift+S`) builds its index once per session, so editing a file
+  afterwards left every symbol below the edit pointing at the wrong line —
+  Enter dropped the caret somewhere unrelated. Every MoleKey jump that names a
+  symbol now checks that the line actually holds it and, if not, takes the
+  nearest line that does. The preview pane shows the corrected line too, so
+  what you see is where you land. This also covers C++ start points that
+  Visual Studio 2026 reports off by a few lines. `F5` in the finder still
+  rebuilds the index outright.
+- **Surround With moves to `Alt+Shift+X`** in the shortcut profile. It was on
+  `Alt+X, S`, which could never have worked — `Alt+X` is Insert Snippet, a
+  complete shortcut, so nothing can follow it and Visual Studio dropped the
+  binding without complaint. If you were reaching for it and getting nothing,
+  that is why.
+- **`Ctrl+Shift+G` works on Visual Studio 2026.** It had been declared the way
+  an extension normally declares a key, which 2026 ignores, so the chord did
+  nothing there. It now rides the C++ *Open Document* command that owns the key
+  by default — the same technique `Alt+Shift+F` and `Ctrl+F12` already use — so
+  the key never has to move. MoleKey searches the whole solution and offers the
+  file finder when the name is ambiguous, where the built-in searches only your
+  include directories; when the caret line holds no path at all, the built-in
+  runs untouched. Switch it off in Tools → Options → MoleKey → Navigation to
+  give the key back.
+- `Shift+Alt+K` and `Shift+Alt+J` are part of the shortcut profile, like
+  `Alt+M` and `Alt+Shift+S`. Visual Studio 2026 does not honor an extension's
+  built-in key declarations, so on 2026 these two chords exist only once the
+  profile has been applied — the MoleKey window's MasterKey page applies it,
+  and *Restore* takes both keys back out again.
+
 ## 0.36.15 — 2026-07-28
 - Listing fix: the extension description showed a corrupted character where
   "declaration/definition toggle" should have been.
