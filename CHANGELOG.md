@@ -3,6 +3,27 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.38.0 — 2026-08-31
+
+A trust and recovery release before the clean-install gate.
+
+- **Health & Restore is now a first-class page** in the MoleKey window. It
+  shows shortcut-profile state, shortcut and color backup availability,
+  command-hook health and the local data folder in one place.
+- **Recovery actions are together and visible.** Run Self-Diagnose, restore
+  shortcuts, restore colors and return stolen keys without hunting through
+  separate settings pages. The page also explains what remains after
+  uninstalling and what to restore first.
+- **Restoring shortcuts now turns profile auto-apply off.** A restored setup
+  stays restored after restart instead of presenting an ambiguous applied
+  state or being reapplied by a future profile change.
+- **Color presets have neutral names:** `VA Dark` and `VA Light` are now
+  `Rich Dark` and `Rich Light`. Existing saved settings using the old names
+  continue to load the matching renamed preset.
+- User-facing and source wording no longer implies affiliation with another
+  productivity-tool vendor. Product documentation now includes the clean
+  install/restore gate and the staged monetization plan.
+
 ## 0.37.0 — 2026-08-01
 
 A navigation cycle: the finders got the matching and the handoffs they were
