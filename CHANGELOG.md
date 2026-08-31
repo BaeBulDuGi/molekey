@@ -17,12 +17,11 @@ A trust and recovery release before the clean-install gate.
 - **Restoring shortcuts now turns profile auto-apply off.** A restored setup
   stays restored after restart instead of presenting an ambiguous applied
   state or being reapplied by a future profile change.
-- **Color presets have neutral names:** `VA Dark` and `VA Light` are now
-  `Rich Dark` and `Rich Light`. Existing saved settings using the old names
+- **Color presets have neutral names:** the vivid dark and light presets are
+  now `Rich Dark` and `Rich Light`. Existing settings from earlier versions
   continue to load the matching renamed preset.
-- User-facing and source wording no longer implies affiliation with another
-  productivity-tool vendor. Product documentation now includes the clean
-  install/restore gate and the staged monetization plan.
+- User-facing terminology is now product-neutral. Product documentation now
+  includes the clean install/restore gate and the staged monetization plan.
 
 ## 0.37.0 — 2026-08-01
 
@@ -161,7 +160,7 @@ your TODOs are, and where you have been.
   the MoleKey profile cover the everyday cases, and custom key rebinding is a
   power-user extra. Its page now opens by saying so, with a concrete example
   (put Ctrl+D on Edit.Duplicate) instead of jumping straight into the mechanics.
-- The **My Keys** page is redrawn as the same Visual-Assist-style checker list as
+- The **My Keys** page is redrawn as a compact checker list like
   the Colors page: a bordered card with a column header and clean rows instead of
   a grid. Each row shows its command, the key you're adding, the command's current
   bindings and any conflicts, with a status pill (green when applied, red when the
@@ -176,9 +175,9 @@ your TODOs are, and where you have been.
   from landing inside `foobar`.
 
 ## 0.36.10 — 2026-07-23
-- The **Colors & theme** page is redrawn as a Visual-Assist-style checker list.
+- The **Colors & theme** page is redrawn as a compact checker list.
   Instead of a "Preset vs. Custom" radio split, there is one grid: pick a
-  starting **Set** (VA Dark / VA Light / Colorblind Dark / Colorblind Light),
+  starting **Set** (dark / light / colorblind variants),
   then tick the classifications you want and click a swatch to recolor. Rows are
   grouped (types & namespaces / members / variables / C++), each with its own
   color, a hex box, and Bold / Italic toggles.
@@ -199,7 +198,7 @@ your TODOs are, and where you have been.
 - The main page is now a **how-to-use guide**: each feature MoleKey adds,
   grouped by purpose (jump around code / search the solution / always-on),
   with its key and a one-line description. The old usage-stats cheat sheet —
-  counts, "muscle memory", export, reset — is gone; a programmer wants to know
+  counts, promotional copy, export, reset — is gone; a programmer wants to know
   what's here and how to reach it, not how many times a key was pressed.
 - Fixed: the window could open with a nav row highlighted but the pane blank
   until a second click.
@@ -337,7 +336,7 @@ your TODOs are, and where you have been.
 ## 0.24 – 0.29 — 2026-07-07
 - Open File Under Caret (Ctrl+Shift+G): resolves the #include or path at the
   caret across the whole solution
-- Selection match highlighting (VA style, works in comments/strings) with
+- Selection match highlighting (works in comments/strings) with
   scrollbar marks and a match count
 - Two-stroke chord capture ("Ctrl+R, Ctrl+R") in My Keys
 - Key stealing with restore, .vskeys export/import, startup re-apply
@@ -345,7 +344,7 @@ your TODOs are, and where you have been.
 - Korean UI throughout; file-list cache and streaming symbol scans
 
 ## 0.9 – 0.23 — 2026-07-05 · 06
-- The VA-style navigation set: Open File in Solution (Alt+Shift+O), List
+- A keyboard-first navigation set: Open File in Solution (Alt+Shift+O), List
   Methods in File (Alt+M), Find Symbol in Solution (Alt+Shift+S), comment
   #hashtags with browser/goto/highlighting/autocompletion (Shift+Alt+H/G)
 - Finder UI: themed styles, match highlighting, kind icons, preview panes,

@@ -4,10 +4,9 @@
 
 **Keyboard-first navigation and comfort pack for Visual Studio 2022 / 2026.**
 
-If your fingers remember `Alt+Shift+O`, `Alt+M`, `Shift+Alt+H` from other
-productivity tools, MoleKey gives that muscle memory a home — dig through
-your code and pop up exactly where you meant to, with every change backed
-up first and restorable in one click.
+Open files, inspect symbols, browse references and move through your code
+without leaving the keyboard. MoleKey keeps these navigation tools together,
+backs up settings before changing them and provides one-click recovery.
 
 ## Install
 
@@ -42,11 +41,6 @@ right.
 
 ![Task markers](images/screenshots/task-markers.png)
 
-**Colors & theme** — pick a starting set, tick the classifications you want,
-recolor any of them; your original editor colors are backed up on first apply.
-
-![Colors and theme](images/screenshots/colors.png)
-
 ## Navigation
 
 | Key | Window |
@@ -54,7 +48,7 @@ recolor any of them; your original editor colors are backed up on first apply.
 | `Alt+Shift+O` | **Open File in Solution** — every solution file, filtered as you type (space = AND terms) |
 | `Alt+M` | **List Methods in File** — the active document's functions/fields/types grouped by class, Enter jumps |
 | `Alt+Shift+S` | **Find Symbol in Solution** — every type & member defined in your code |
-| `Alt+Shift+F` | **Find All References** — C/C++ gets a call-site list grouped by file; other languages keep the VS window |
+| `Alt+Shift+F` | **Find All References** — C/C++ gets a call-site list grouped by file; other languages keep the Visual Studio window |
 | `Ctrl+Shift+G` | **Open File Under Caret** — resolves the `#include` or path at the caret across the whole solution |
 | `Shift+Alt+J` | **Jump History** — every place you've been this session, Enter goes back |
 | `Shift+Alt+K` | **Task Markers** — every `TODO` / `FIXME` / `HACK` in the solution's comments |
@@ -116,7 +110,7 @@ one". Nothing is written to disk.
 ## C/C++ references
 
 - `Alt+Shift+F` on a C/C++ symbol lists its call sites grouped by file, with
-  syntax-colored previews — including on VS 2026's new C++ editor
+  syntax-colored previews — including on Visual Studio 2026's new C++ editor
 - An inline **"N references"** count next to each function definition (the
   CodeLens C++ never got); click it to open the same list
 - `Alt+O` toggles header/source even when the counterpart lives in another
@@ -128,10 +122,10 @@ one". Nothing is written to disk.
 
 - **MoleKey profile**: a curated navigation key set (`Alt+G` go to definition,
   `Alt+O` toggle header/code, `Alt+←/→` navigate back/forward, …) applied only
-  **with your consent**, merged next to the VS defaults — never replacing them.
+  **with your consent**, merged next to the Visual Studio defaults — never replacing them.
   Original bindings are backed up on first touch; **Restore** brings them back exactly.
 - **My Keys**: bind any of Visual Studio's ~10,000 commands to your own shortcut —
-  search the command, capture the key in a dialog (even combinations VS already
+  search the command, capture the key in a dialog (even combinations Visual Studio already
   uses), pick Global or Text Editor scope, Apply. Conflict scanning included.
 
 ## Enhanced syntax coloring
@@ -140,9 +134,9 @@ Presets that give fields, parameters, statics and macros distinct colors
 (dark & light variants), or build your own per-item scheme with a color picker.
 Works on Visual Studio 2022 and 2026 (including the 2026 C++ editor rework).
 
-**Moving from VS 2022?** It doesn't bring your Fonts and Colors along, and
-importing the `.vssettings` through VS drops every C++ item — 2026 renamed
-them. *Import from VS 2022…* on the Colors page maps the old names to the new
+**Moving from Visual Studio 2022?** It doesn't bring your Fonts and Colors along, and
+importing the `.vssettings` through Visual Studio drops every C++ item — 2026 renamed
+them. *Import from Visual Studio 2022…* on the Colors page maps the old names to the new
 ones so the C++ colors survive too. The same page also puts the editor
 settings the upgrade resets — scroll bar map mode, its preview tooltip,
 scroll bar marks, line numbers — back within reach.
