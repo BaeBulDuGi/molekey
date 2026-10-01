@@ -3,6 +3,14 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.38.2 — 2026-10-01
+
+- Restore shortcuts preserves keys that already existed before the profile was
+  applied, including factory shortcuts, and verifies the resulting bindings.
+- Back up nameless extension commands under distinct command IDs. Ambiguous
+  entries in older backups are skipped during restore instead of assigning
+  another command's shortcuts.
+
 ## 0.38.1 — 2026-10-01
 
 - Fix Korean arrow-key bindings failing when the shortcut profile is reapplied.
