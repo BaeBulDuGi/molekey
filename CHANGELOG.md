@@ -3,6 +3,111 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.38.1 — 2026-10-01
+
+- Fix Korean arrow-key bindings failing when the shortcut profile is reapplied.
+  Convert localized arrow names to the accepted write format when applying,
+  restoring, or resolving shortcut conflicts, while retaining localized scopes.
+
+- Resolve Text Editor shortcut scopes from editor bindings rather than the first
+  available scope. Korean installations with missing default bindings use the
+  localized editor scope, and Quick Actions no longer selects a XAML scope first.
+
+- Navigation finders keep status and key hints on separate lines, and shrink a
+  large preview to keep results and controls visible in a small window.
+- Long member names and parameter lists use separate trimmed lines with full
+  tooltips. Member group headers keep counts visible. Line-number columns reserve
+  space for six digits; search hints and keyboard-focus indicators are clearer.
+- Reference/tag file groups display their directories. Narrow file/symbol paths
+  keep the distinguishing suffix, with the full path in tooltips and accessibility names.
+- Jump History marks the current file/line and explains its previous-location
+  selection. Browsing previews leaves the editor in place; Esc restores its
+  window focus, and selecting Current preserves the caret column and selection.
+  Open-buffer previews include unsaved edits. Repeated invocation reuses the
+  open dialog; failed navigation shows a retry/cancel hint.
+- File Finder records the departure location before opening files. Jump History
+  selects the newest location different from the current file/line instead of
+  blindly skipping the first entry; displayed return targets remain stable when
+  nearby history entries are updated.
+- File/history refreshes and member sort/group changes retain surviving selections
+  and preview scroll positions. File refresh also retains multiple selections by
+  full path. Failed member/history jumps leave the finder open, and navigation
+  checks the active document before moving its caret.
+- Replacing a reference search or closing its tab now cancels the previous scan;
+  solution closure and pane disposal cancel tab searches as well. Late results
+  remain suppressed, and cancellation is not reported as an unreadable file.
+- Reference searches capture only open C/C++ documents and log separate capture,
+  scan and result-layout times locally. A reproducible index-only performance
+  script and synthetic baseline document the measurement scope and limitations.
+- References handle bare F5 in the focused pane's keyboard preprocessing stage
+  and provide a Refresh results context-menu action. Modified F5 shortcuts pass
+  through; holding F5 does not repeatedly start scans. Verified in the current VS environment.
+- Reference list keyboard focus follows the selected row. Empty Enter in the
+  shortcut capture dialog no longer creates an Enter binding. Jump History uses
+  Ctrl+Shift+Delete to clear the trail; plain Delete edits the search text.
+- C/C++ reference results now disclose name-based matching, scanned/collected file
+  counts, skipped files and hits omitted by the 2,000-result limit. Tooltips
+  explain size/read exclusions and combined same-name symbols. Empty searches
+  distinguish no collected files from no matches in a partially scanned scope.
+- UI consistency pass across file/symbol/member finders, jump history, hashtags,
+  references, query/key dialogs and the MoleKey settings panel. Search fields
+  expose their localized hints to accessibility tools; layout rounding, readable
+  secondary text, path tooltips and visible preview splitter grips improve use
+  at smaller window sizes.
+- References and hashtag locations share compact file headers with disclosure
+  arrows, result counts and full-path tooltips. Line numbers keep a compact width
+  while code fills the remainder; the reference filter adapts to pane width.
+- Hashtag tag/results columns can be resized. Dialogs and settings controls have
+  explicit keyboard-focus outlines; default dialog actions are highlighted.
+  Reference tab close targets are larger and have accessible search names.
+- The settings navigation is narrower and scrollable in short panes. Content
+  keeps a readable minimum width with horizontal scrolling in narrow docks;
+  the title tagline trims with a tooltip instead of overflowing.
+- Reference result groups use pixel scrolling that includes file headers, and
+  file names come from the group path rather than its first result row. This
+  addresses headers disappearing after scrolling down and back to the top;
+  verified in the current Visual Studio environment.
+- Reported issue: F5 in the docked references pane invoked Visual Studio's
+  build/debug command. Pane keyboard preprocessing is implemented and verified
+  in the current VS environment. Refresh results in the context menu is also available.
+- Find References uses the MoleKey title-bar icon and themed Find/Cancel buttons.
+  The docked pane omits the New search/Close all toolbar to leave more room for
+  results; individual search tabs still have close buttons.
+- Submitting a reference search focuses its result row for immediate arrow-key
+  navigation. A completed background scan does not steal focus from the editor
+  or the result filter.
+- Reference searches show a searching state instead of an empty-results message
+  while running, and a retry hint on failure. F5 keeps existing results visible,
+  preserves selection by file and line, and restores scroll offsets (clamped if
+  results shrink). If the selected result disappears, a nearby row is selected.
+- Alt+Shift+F opens a separate search dialog, including from whitespace in a
+  C/C++ editor. The docked pane now contains compact result tabs and a result
+  filter; entering a new search no longer takes space away from the results.
+- C/C++ references now open in a dockable tool window beside Output. Each search
+  keeps its own tab, results and filter while navigating code. Repeating a name
+  refreshes its tab; F5 reads the latest buffers. Tabs can be closed individually
+  and are cleared when the solution closes.
+- Find References accepts a typed function or variable name. The caret word is
+  an optional starting query; press Enter or Find to search, and use the separate
+  filter to narrow results by code or file name.
+- C/C++ Find All References now includes variable declarations, reads and writes,
+  plus function addresses. Results match exact names across scopes and show one
+  row per line, excluding comments and literals. Function reference lenses keep
+  their call-only counts.
+
+- Switching finder modes with an empty query keeps the query empty instead of
+  recalling an older search. Footer key labels stay together when wrapping.
+- Dialog centring now happens before the first native display, avoiding a
+  briefly visible frame at the old position. Clicking the active finder tab
+  keeps it selected; shortcut legends wrap in narrower windows.
+- Shortcut-opened windows are centred precisely on the Visual Studio frame,
+  including mixed-DPI and multi-monitor setups.
+- Finder windows have a cleaner, more responsive layout: adjustable remembered
+  previews, mode tabs, compact key legends, adaptive columns, quieter selection,
+  role-based typography, and useful empty/indexing states.
+- Repeated MoleKey logos were removed from result rows; semantic file and symbol
+  icons remain.
+
 ## 0.38.0 — 2026-08-31
 
 A trust and recovery release before the clean-install gate.
