@@ -123,7 +123,9 @@ one". Nothing is written to disk.
 - **MoleKey profile**: a curated navigation key set (`Alt+G` go to definition,
   `Alt+O` toggle header/code, `Alt+←/→` navigate back/forward, …) applied only
   **with your consent**, merged next to the Visual Studio defaults — never replacing them.
-  Original bindings are backed up on first touch; **Restore** brings them back exactly.
+  Original bindings are backed up on first touch. **Restore** preserves original
+  shortcuts and removes profile keys added afterward. Commands whose originals
+  cannot be identified in an older backup are reported as skipped.
 - **My Keys**: bind any of Visual Studio's ~10,000 commands to your own shortcut —
   search the command, capture the key in a dialog (even combinations Visual Studio already
   uses), pick Global or Text Editor scope, Apply. Conflict scanning included.
