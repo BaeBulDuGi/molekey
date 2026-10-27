@@ -43,6 +43,11 @@ right.
 
 ## Navigation
 
+The 0.38.3 update improves multi-monitor Finder startup and window sizing,
+loads File Finder lists in cancellable batches, stabilizes scrolling and path
+display, and repairs a missing backed-up F12 binding without removing Alt+G.
+See [release notes](docs/releases/v0.38.3.md) for details.
+
 | Key | Window |
 |---|---|
 | `Alt+Shift+O` | **Open File in Solution** — every solution file, filtered as you type (space = AND terms) |

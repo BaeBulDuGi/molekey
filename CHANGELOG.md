@@ -3,6 +3,26 @@
 User-facing changes per released version. Versions not listed were internal
 iterations. Dates are release dates.
 
+## 0.38.3 — 2026-10-27
+
+- Repair missing F12 on Go to Definition once per VS instance, even when the
+  shortcut profile is already stamped as applied. Require an original F12
+  backup and an existing Alt+G binding, preserve live shortcuts, and leave
+  another command's Global F12 assignment unchanged.
+- Give Finder result lists an explicit scrolling viewport and vertical scrollbar
+  so navigation does not depend on inherited IDE templates. Measure path cells
+  from the original path, independently of the displayed suffix, to prevent
+  shortening from feeding back into subsequent layout measurements.
+- Prepare navigation dialogs on the Visual Studio monitor while still hidden,
+  before their first show operation, to address a brief empty frame appearing
+  on the primary monitor. Preserve final-size centering and work-area clamping.
+- Load File Finder lists in small UI-thread batches so typing, painting, and
+  closing can continue during a scan. F5 cancels an earlier refresh; completed
+  refreshes preserve the current selection and preview position. Solution
+  changes invalidate pending scans and the cache.
+- Fit navigation dialog dimensions to the owner monitor's work area and DPI,
+  including screens smaller than the usual minimum dialog size.
+
 ## 0.38.2 — 2026-10-01
 
 - Restore shortcuts preserves keys that already existed before the profile was
